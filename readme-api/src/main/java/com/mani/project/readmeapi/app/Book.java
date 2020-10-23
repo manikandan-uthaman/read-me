@@ -10,8 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +18,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "books")
 @Getter @Setter
+@ValidateBookObject
 public class Book implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -29,31 +29,30 @@ public class Book implements Serializable {
 	public int id;
 
 	@Column(name = "title")
-	@NotNull
+	@NotNull(message = "Title cannot be empty")
 	public String title;
 	
 	@OneToOne
 	@JoinColumn(name = "author", referencedColumnName = "id")
-	@NotNull
+	@NotNull(message = "Author of a book is mandatory")
 	public Author author;
 	
 	@Column(name = "price")
-	@NotNull
+	@NotNull(message = "Price field cannot be null")
 	public int price;
 	
 	@Column(name = "year")
-	@NotNull
+	@NotNull(message = "Year field cannot be null")
 	public String year;
 	
 	@Column(name = "rating")
-	@NotNull
+	@NotNull(message = "Rating field cannot be null")
 	public float rating;
 	
 	@Column(name = "url")
-	@NotNull
 	public String url;
 	
 	@Column(name = "description")
-	@NotNull
+	@NotNull(message = "Description cannot be empty")
 	public String description;
 }

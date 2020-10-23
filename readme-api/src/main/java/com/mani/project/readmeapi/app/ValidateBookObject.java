@@ -14,7 +14,7 @@ import javax.validation.Payload;
 @Documented
 @Constraint(validatedBy = CreateBookValidator.class)
 public @interface ValidateBookObject {
-    String message() default "Input is not valid";
+    String message() default "Artist name cannot be null, while creating a new artist";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};	
 }

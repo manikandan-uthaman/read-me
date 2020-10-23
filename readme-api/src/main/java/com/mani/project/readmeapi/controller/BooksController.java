@@ -1,5 +1,7 @@
 package com.mani.project.readmeapi.controller;
 
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -47,6 +49,12 @@ public class BooksController {
 			@ApiResponse(code = 500, message = "Unexpected exception")
 	})
 	public BookSearchResponse getBooks(@Validated @RequestBody BookSearchRequest bookSearchRequest, BindingResult bindingResult) {
+		if(bindingResult.hasGlobalErrors()) {
+			String errorMessage = bindingResult.getAllErrors().stream().map(error -> {
+				return error.getDefaultMessage();
+			}).collect(Collectors.joining("|"));
+			throw new IllegalArgumentException(errorMessage);
+		}
 		log.info("Get list of all books");
 		return bookService.searchBooks(bookSearchRequest);
 	}
@@ -80,7 +88,10 @@ public class BooksController {
 	})
 	public int addBook(@Validated @RequestBody Book book, BindingResult bindingResult) {
 		if(bindingResult.getAllErrors().size() > 0) {
-			throw new IllegalArgumentException("The input is invalid");
+			String errorMessage = bindingResult.getAllErrors().stream().map(error -> {
+				return error.getDefaultMessage();
+			}).collect(Collectors.joining(" | "));
+			throw new IllegalArgumentException(errorMessage);
 		}
 		if(book.getAuthor().getId() == 0) {
 			log.debug("Adding new author");
