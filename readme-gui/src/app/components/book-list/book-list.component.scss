@@ -1,0 +1,142 @@
+.book-list-section{
+    // height: 100vh;
+    background-image: linear-gradient(to right bottom, rgba(#7ed56f, 0.8), rgba(#28b485, 0.8)), url(../../../assets/images/bg-list.jpg);
+    background-repeat: repeat-y;
+    background-size: auto;
+    background-position: top;
+}
+
+.book-list-div {
+    padding-top: 6rem;
+}
+
+.row {
+    margin: 0 auto;
+    &:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    &::after {
+        content: "";
+        display: table;
+        clear: both; 
+    }
+
+}
+
+.row [class^="col-"] {
+    float: left;
+    padding-top: 6rem;
+}
+.row .col-1-of-2 {
+    width: calc((100%) / 2); 
+}
+.row .col-1-of-3 {
+    width: calc(100% / 3); 
+}
+.row .col-2-of-3 {
+    width: calc(100% - (100% / 3)); 
+}
+
+.heading-tertiary {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.book {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    box-shadow: 0 3rem 6rem rgba(#000000, .1);
+    background-color: rgba(#ffffff, .6);
+    border-radius: 3px;
+    padding: 4rem 6rem 8rem 6rem;
+    padding-left: 9rem;
+    font-size: 1.6rem;
+    min-height: 24rem;
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba(#000000, .2);
+    }
+
+    &-text {
+        top: 50%;
+        transform: translateY(30%);
+    }
+
+    &-shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem);
+        position: relative;
+    }
+
+    &-image {
+        width: 100%;
+        transform: translateY(-4rem) scale(1.4);
+        transition: all .5s;
+    }
+
+    &-caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &-caption{
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover &-image {
+        transform: translateY(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+}
+
+.stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: 3rem;
+    font-family: Times; // make sure ★ appears correctly
+    line-height: 1;
+    &::before {
+        content: '★★★★★';
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, #000 var(--percent), #777 var(--percent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.stars .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: transparent;
+    color: #000;
+    text-align: center;
+    padding: 5px 0;
+    font-size: 2rem;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    right: 3rem;
+    bottom: -3rem;
+  }
+  
+  .stars:hover .tooltiptext {
+    visibility: visible;
+  }
