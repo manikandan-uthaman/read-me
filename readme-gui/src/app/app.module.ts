@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { CardComponent } from './components/card/card.component';
+import { ObserveVisibilityDirective } from './directive/observe-visibility.directive';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     BookListComponent,
-    CardComponent
+    CardComponent,
+    ObserveVisibilityDirective,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
