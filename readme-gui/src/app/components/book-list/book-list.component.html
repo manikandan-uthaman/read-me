@@ -1,48 +1,10 @@
 <section class="book-list-section">
-    <div class="row" *ngFor="let row of rows">
-        <div class="col-1-of-2" *ngFor="let book of row">
-            <div class="book">
-                <figure class="book-shape">
-                    <img src="https://picsum.photos/id/1010/200/300" class="book-image">
-                    <figcaption class="book-caption">{{ book.author.name | uppercase }}</figcaption>
-                </figure>
-                <div class="book-text">
-                    <h3 class="heading-tertiary">{{ book.title | uppercase }}</h3>
-                    <div>
-                        <p style="display: inline-block;">Year: {{ book.year | uppercase }}</p>
-                        <p style="float: right;">Rating</p>
-                    </div>
-                    <div>
-                        <p style="display: inline-block;">Price: {{ book.price | currency:'USD' }}</p>
-                        <div class="stars" style="--rating: {{book.rating}}; float: right">
-                            <span class="tooltiptext">{{book.rating}} out of 5</span>
-                        </div>
-                    </div>
-                </div>
+        <div class="heading">
+            <h2 class="heading-text">Books List</h2>
+        </div>
+        <div class="row" *ngFor="let row of rows; let i=index">
+            <div class="col-1-of-3" *ngFor="let book of row; let j=index">
+                    <app-card [book]="book" [colorScheme]="getColorScheme(i, j)"></app-card>
             </div>
         </div>
-    </div>
-    <!-- <div class="book-list">
-        <div class="book-list-div">
-            <div class="book" *ngFor="let book of bookList">
-                <figure class="book-shape">
-                    <img src="https://picsum.photos/id/1010/200/300" class="book-image">
-                    <figcaption class="book-caption">{{ book.author.name | uppercase }}</figcaption>
-                </figure>
-                <div class="book-text">
-                    <h3 class="heading-tertiary">{{ book.title | uppercase }}</h3>
-                    <div>
-                        <p style="display: inline-block;">Year: {{ book.year | uppercase }}</p>
-                        <p style="float: right;">Rating</p>
-                    </div>
-                    <div>
-                        <p style="display: inline-block;">Price: {{ book.price | currency:'USD' }}</p>
-                        <div class="stars" style="--rating: {{book.rating}}; float: right">
-                            <span class="tooltiptext">{{book.rating}} out of 5</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </section>
