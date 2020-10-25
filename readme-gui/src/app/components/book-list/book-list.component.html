@@ -1,9 +1,7 @@
-<div class="navigation" (click)="redirectToHome()">
-    <img src="../../../assets/images/home-icon.png" class="home-icon">
-</div>
+<home-icon></home-icon>
 <section class="book-list-section">
         <div class="heading">
-            <h2 class="heading-text">Books List</h2>
+            <h2 class="heading-text">{{ pageTitle }}</h2>
         </div>
         <div class="row" *ngFor="let row of rows; let i=index">
             <div class="col-1-of-3" *ngFor="let book of row; let j=index">
