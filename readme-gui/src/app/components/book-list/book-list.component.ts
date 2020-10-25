@@ -9,6 +9,25 @@ export class BookListComponent implements OnInit {
 
   bookList;
   rows;
+
+  colorSchemeOrange = {
+    lightHex: '#ffb900',
+    lightRgb: '255,185,0',
+    darkHex: '#ff7730',
+    darkRgb: '255,119,48'
+  };
+  colorSchemeBlue = {
+    lightHex: '#2998ff',
+    lightRgb: '41,152,255',
+    darkHex: '#5643fa',
+    darkRgb: '86,67,250'
+  };
+  colorSchemeGreen = {
+    lightHex: '#7ed56f',
+    lightRgb: '126,213,111',
+    darkHex: '#28b485',
+    darkRgb: '40,180,133'
+  };
   constructor() { }
 
   ngOnInit(): void {
@@ -45,7 +64,7 @@ export class BookListComponent implements OnInit {
           id: 3,
           name: 'Max Giovanna'
         },
-        title: 'The Amazing Adventures of Anonymous',
+        title: 'The Adventures of Anonymous',
         price: 430,
         rating: 2.8
       },
@@ -72,7 +91,7 @@ export class BookListComponent implements OnInit {
         title: 'An exploration of Memes',
         price: 120,
         rating: 1.3
-      },{
+      }, {
         id: 2,
         year: '2015',
         url: 'http://author.com',
@@ -104,7 +123,7 @@ export class BookListComponent implements OnInit {
           id: 3,
           name: 'Max Giovanna'
         },
-        title: 'The Amazing Adventures of Anonymous',
+        title: 'The Adventures of Anonymous',
         price: 430,
         rating: 2.8
       },
@@ -131,7 +150,7 @@ export class BookListComponent implements OnInit {
         title: 'An exploration of Memes',
         price: 120,
         rating: 1.3
-      },{
+      }, {
         id: 2,
         year: '2015',
         url: 'http://author.com',
@@ -163,7 +182,7 @@ export class BookListComponent implements OnInit {
           id: 3,
           name: 'Max Giovanna'
         },
-        title: 'The Amazing Adventures of Anonymous',
+        title: 'The Adventures of Anonymous',
         price: 430,
         rating: 2.8
       },
@@ -198,10 +217,54 @@ export class BookListComponent implements OnInit {
 
   initializePage() {
     this.rows = [];
-    const rowCount = Math.ceil(this.bookList.length / 2);
+    const rowCount = Math.ceil(this.bookList.length / 3);
     for (let index = 0; index < rowCount; index++) {
-      this.rows.push(this.bookList.splice(0, 2));
+      this.rows.push(this.bookList.splice(0, 3));
     }
   }
 
+  getColorScheme(rowNum, columnNum) {
+    let sum = rowNum + columnNum;
+    while (sum > 2) {
+      sum = sum - 3;
+    }
+    if (sum === 0) {
+      return this.colorSchemeOrange;
+    }
+    if (sum === 1) {
+      return this.colorSchemeGreen;
+    }
+    if (sum === 2) {
+      return this.colorSchemeBlue;
+    }
+  }
+
+  onScroll() {
+    setTimeout(() => {
+      this.bookList.push({
+        id: 2,
+        year: '2015',
+        url: 'http://author.com',
+        author: {
+          id: 1,
+          name: 'John Doe'
+        },
+        title: 'TIME MANAGEMENT',
+        price: 100,
+        rating: 3.5
+      });
+      this.bookList.push({
+        id: 3,
+        year: '2018',
+        url: 'http://author.com',
+        author: {
+          id: 2,
+          name: 'Harry Graham Thornton'
+        },
+        title: 'The Big, White Bear',
+        price: 312,
+        rating: 4.7
+      });
+    }, 3000);
+  }
 }

@@ -3,7 +3,14 @@ $color-grey-dark: #777;
 $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
-  
+
+:root {
+    --card-light-hex: #ffb900;
+    --card-light-rgb: 255,185,0;
+    --card-dark-hex: #ff7730;
+    --card-dark-rgb: 255,119,48;
+}
+
 *,
 *::after,
 *::before {
@@ -26,4 +33,32 @@ body {
     // padding: 3rem;
     height: 100%;
     overflow: auto;
+}
+
+.btn {
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+    }
+    &:hover {
+        transform: translateY(-.3rem);
+        box-shadow: 0 1rem 2rem rgba(#000000, .2);
+    }
+    &:active {
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba(#000000, .2);
+    }
+    &-white {
+        background-color: #ffffff;
+        color: #777;
+        &::after {
+            background-color: #ffffff;
+        }
+    }
 }
