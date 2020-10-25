@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface Author {
   id: number;
@@ -43,7 +44,7 @@ export class BookListComponent implements OnInit {
     darkHex: '#28b485',
     darkRgb: '40,180,133'
   };
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.bookList = [
@@ -286,5 +287,9 @@ export class BookListComponent implements OnInit {
       this.isLoading = false;
     }, 3000);
 
+  }
+
+  redirectToHome() {
+    this.router.navigate(['/home']);
   }
 }
