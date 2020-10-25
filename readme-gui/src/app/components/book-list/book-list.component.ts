@@ -1,4 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+
+export interface Author {
+  id: number;
+  name: string;
+}
+export interface Book {
+  id: number;
+  year: string;
+  url: string;
+  author: Author;
+  title: string;
+  price: number;
+  rating: number;
+}
 
 @Component({
   selector: 'app-book-list',
@@ -7,9 +21,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookListComponent implements OnInit {
 
-  bookList;
-  rows;
-
+  bookList: Array<Book>;
+  rows: Array<Array<Book>>;
+  loadMoreOnScroll = true;
+  isLoading = false;
   colorSchemeOrange = {
     lightHex: '#ffb900',
     lightRgb: '255,185,0',
@@ -218,8 +233,9 @@ export class BookListComponent implements OnInit {
   initializePage() {
     this.rows = [];
     const rowCount = Math.ceil(this.bookList.length / 3);
-    for (let index = 0; index < rowCount; index++) {
-      this.rows.push(this.bookList.splice(0, 3));
+    let startIndex = 0;
+    for (let index = 0; index < rowCount; index++, startIndex += 3) {
+      this.rows.push(this.bookList.slice(startIndex, startIndex + 3));
     }
   }
 
@@ -240,6 +256,7 @@ export class BookListComponent implements OnInit {
   }
 
   onScroll() {
+    this.isLoading = true;
     setTimeout(() => {
       this.bookList.push({
         id: 2,
@@ -265,6 +282,9 @@ export class BookListComponent implements OnInit {
         price: 312,
         rating: 4.7
       });
+      this.initializePage();
+      this.isLoading = false;
     }, 3000);
+
   }
 }

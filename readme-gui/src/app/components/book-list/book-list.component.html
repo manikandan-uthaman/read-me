@@ -7,4 +7,7 @@
                     <app-card [book]="book" [colorScheme]="getColorScheme(i, j)"></app-card>
             </div>
         </div>
+        <app-spinner [hidden]="!isLoading"></app-spinner>
 </section>
+<div *ngIf="loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">
+</div>
