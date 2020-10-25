@@ -1,0 +1,20 @@
+.navigation {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 5.5rem;
+    right: 5.5rem;
+    z-index: 1000;
+    background-image: radial-gradient(#7ed56f, #28b485);
+    box-shadow: 0 1.5rem 4rem rgba(#000000,.15);
+    cursor: pointer;
+}
+
+.home-icon {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+}
