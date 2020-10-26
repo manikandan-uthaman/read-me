@@ -1,0 +1,8 @@
+<div class="icon-container">
+    <div class="navigation" *ngIf="showIcon('home')" (click)="emitEvent('/home')">
+        <img src="../../../assets/images/home-icon.png" class="home-icon">
+    </div>
+    <div class="navigation" *ngIf="showIcon('back')" (click)="emitEvent('/books')">
+        <img src="../../../assets/images/back-icon.png" class="back-icon">
+    </div>    
+</div>

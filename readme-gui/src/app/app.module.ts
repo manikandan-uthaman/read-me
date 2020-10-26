@@ -9,7 +9,10 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { CardComponent } from './components/card/card.component';
 import { ObserveVisibilityDirective } from './directive/observe-visibility.directive';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { HomeIconComponent } from './components/home-icon/home-icon.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { HeadingComponent } from './components/heading/heading.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { ToastrComponent } from './components/toastr/toastr.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { HomeIconComponent } from './components/home-icon/home-icon.component';
     CardComponent,
     ObserveVisibilityDirective,
     SpinnerComponent,
-    HomeIconComponent
+    BookDetailsComponent,
+    HeadingComponent,
+    MenuComponent,
+    ToastrComponent
   ],
   imports: [
     BrowserModule,

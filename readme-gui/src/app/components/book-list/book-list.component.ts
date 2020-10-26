@@ -1,9 +1,17 @@
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book';
 import { ColorScheme } from 'src/app/model/color-schemes';
 import { BookSearchRequest } from 'src/app/model/search-request';
 import { SearchResponse } from 'src/app/model/search-response';
 import { BookService } from 'src/app/services/book.service';
+import { ToastrService } from 'src/app/services/toastr.service';
+
+export interface BookListOptions {
+  showHomeButton?: boolean;
+  loadMoreOnScroll?: boolean;
+  pageTitle?: string;
+}
 
 @Component({
   selector: 'app-book-list',
@@ -16,8 +24,12 @@ export class BookListComponent implements OnInit {
   rows: Array<Array<Book>>;
   isLoading = false;
 
-  @Input() loadMoreOnScroll = true;
-  @Input() pageTitle = 'Books List';
+  @Input() options: BookListOptions = {
+    showHomeButton: true,
+    loadMoreOnScroll: true,
+    pageTitle: 'Book List'
+  };
+
   @Input() searchRequest: BookSearchRequest = {
     pageNumber: 1,
     recordsPerPage: 10
@@ -25,7 +37,7 @@ export class BookListComponent implements OnInit {
 
   totalNumberOfpages = 0;
 
-  constructor(private _bookService: BookService) { }
+  constructor(private _bookService: BookService, private toastrService: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadBooks();
@@ -37,13 +49,15 @@ export class BookListComponent implements OnInit {
       this._bookService.getBookList(this.searchRequest).subscribe((resp: SearchResponse) => {
         this.totalNumberOfpages = Math.ceil(resp.totalNumberOfElements / resp.resultsPerPage);
         if (this.totalNumberOfpages === this.searchRequest.pageNumber) {
-          this.loadMoreOnScroll = false;
+          this.options.loadMoreOnScroll = false;
         }
         this.bookList.push(...resp.books);
         this.initializePage();
         this.isLoading = false;
       }, (error) => {
         this.isLoading = false;
+        this.options.loadMoreOnScroll = false;
+        this.toastrService.showError('Something went wrong. Please try again later..');
         console.log('Something went wrong..');
       });
     }, 3000);
@@ -78,4 +92,9 @@ export class BookListComponent implements OnInit {
     this.searchRequest.pageNumber = this.searchRequest.pageNumber + 1;
     this.loadBooks();
   }
+
+  menuClickEvent(url: string) {
+    this.router.navigate([url]);
+  }
+
 }

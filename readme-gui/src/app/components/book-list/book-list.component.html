@@ -1,14 +1,12 @@
-<home-icon></home-icon>
+<app-menu *ngIf="options.showHomeButton" items="['home']" (clicked) = "menuClickEvent($event)"></app-menu>
 <section class="book-list-section">
-        <div class="heading">
-            <h2 class="heading-text">{{ pageTitle }}</h2>
+    <app-heading [headingText] = "options.pageTitle"></app-heading>
+    <div class="row" *ngFor="let row of rows; let i=index">
+        <div class="col-1-of-3" *ngFor="let book of row; let j=index">
+                <app-card [book]="book" [colorScheme]="getColorScheme(i, j)"></app-card>
         </div>
-        <div class="row" *ngFor="let row of rows; let i=index">
-            <div class="col-1-of-3" *ngFor="let book of row; let j=index">
-                    <app-card [book]="book" [colorScheme]="getColorScheme(i, j)"></app-card>
-            </div>
-        </div>
-        <app-spinner [hidden]="!isLoading"></app-spinner>
+    </div>
+    <app-spinner [hidden]="!isLoading"></app-spinner>
 </section>
-<div *ngIf="loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">
+<div *ngIf="options.loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">
 </div>

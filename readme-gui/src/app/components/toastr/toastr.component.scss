@@ -1,0 +1,54 @@
+.toastr {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 1000;
+
+    &-container {
+        padding: 1rem;
+        color: white;
+        border-radius: 3px;
+        margin-bottom: 1rem;
+        animation: toastr var(--timeout) 1 ease-out;
+    }
+
+    &-success {
+        background-image: linear-gradient(to right, #28b485, #7ed56f);
+    }
+
+    &-error {
+        background-image: linear-gradient(to right, #ff7730, #ffb900);
+    }
+
+    &-info {
+        background-image: linear-gradient(to right, #5643fa, #2998ff);
+    }
+
+    &-text {
+        font-size: 1.6rem;
+        font-weight: 400;
+    }
+}
+
+.close-btn {
+    margin-left: 1rem;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-weight: 900;
+    &:hover {
+        color: #000;
+    }
+}
+
+@keyframes toastr {
+    0% {
+        opacity: 1;
+    }
+    // 50% {
+    //     opacity: .8;
+    // }
+    100% {
+        opacity: 0;
+    }
+}
