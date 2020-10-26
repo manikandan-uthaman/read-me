@@ -4,7 +4,7 @@ export enum FilterCriteria {
 }
 
 export interface BookSearchRequest {
-    filterCriteria?: FilterCriteria;
+    filterBy?: FilterCriteria;
     searchString?: string;
     pageNumber?: number; // starts with 1
     recordsPerPage?: number;
