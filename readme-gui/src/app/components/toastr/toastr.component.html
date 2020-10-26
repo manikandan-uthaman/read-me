@@ -1,0 +1,12 @@
+<div class="toastr">
+    <ng-container *ngFor="let msg of messages">
+    <div class="toastr-container" style="--timeout:{{timeToLive}}s" 
+        [ngClass] = "{
+            'toastr-success': msg.type == 'success',
+            'toastr-error': msg.type == 'error',
+            'toastr-info': msg.type == 'info'}" *ngIf="msg.text">
+            <span class="toastr-text">{{ msg.text }}</span>
+            <span class="close-btn" (click)="removeMessage(msg)">&times;</span>
+        </div>
+    </ng-container>
+</div>

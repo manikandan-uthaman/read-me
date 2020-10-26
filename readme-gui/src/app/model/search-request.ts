@@ -1,6 +1,6 @@
 export enum FilterCriteria {
-    TITLE,
-    AUTHOR
+    TITLE = 'TITLE',
+    AUTHOR = 'AUTHOR'
 }
 
 export interface BookSearchRequest {

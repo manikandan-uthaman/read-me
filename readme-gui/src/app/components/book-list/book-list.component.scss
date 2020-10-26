@@ -1,58 +1,9 @@
 .book-list-section {
-    background-color: #f7f7f7;
+    background-color: #ffffff;
     padding: 5rem 3rem;
-    min-height: 100vh;
+    // min-height: 100vh;
 }
-.heading {
-    text-align: center;
+
+.row:not(:last-child) {
     margin-bottom: 8rem;
-    &-text {
-        font-size: 3.5rem;
-        text-transform: uppercase;
-        font-weight: 700;
-        display: inline-block;
-        background-image: linear-gradient(to right, #7ed56f, #28b485);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-        transition: all .2s;
-        &:hover {
-            transform: scale(1.2);
-            text-shadow: .5rem 1rem 2rem rgba(#000000, .2);
-        }
-        
-    }
-}
-
-.row {
-    max-width: 114rem;
-    margin: 0 auto;
-    &:not(:last-child) {
-        margin-bottom: 8rem;
-    }
-    &::after {
-        content: "";
-        display: table;
-        clear: both; 
-    }
-
-}
-
-.row [class^="col-"] {
-    float: left;
-    &:not(:last-child) {
-        margin-right: 6rem;
-    }
-}
-.row .col-1-of-2 {
-    // width: calc((100%) / 2); 
-    width: calc((100% - 6rem) / 2);
-}
-.row .col-1-of-3 {
-    // width: calc(100% / 3); 
-    width: calc((100% - (6rem*2)) / 3);
-}
-.row .col-2-of-3 {
-    // width: calc(100% - (100% / 3)); 
-    width: calc(100% - 6rem - ((100% - (6rem*2)) / 3));
 }

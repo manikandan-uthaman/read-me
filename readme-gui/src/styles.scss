@@ -62,3 +62,36 @@ body {
         }
     }
 }
+
+.row {
+    max-width: 114rem;
+    margin: 0 auto;
+    // &:not(:last-child) {
+    //     margin-bottom: 8rem;
+    // }
+    &::after {
+        content: "";
+        display: table;
+        clear: both; 
+    }
+
+}
+
+.row [class^="col-"] {
+    float: left;
+    &:not(:last-child) {
+        margin-right: 6rem;
+    }
+}
+.row .col-1-of-2 {
+    // width: calc((100%) / 2); 
+    width: calc((100% - 6rem) / 2);
+}
+.row .col-1-of-3 {
+    // width: calc(100% / 3); 
+    width: calc((100% - (6rem*2)) / 3);
+}
+.row .col-2-of-3 {
+    // width: calc(100% - (100% / 3)); 
+    width: calc(100% - 6rem - ((100% - (6rem*2)) / 3));
+}
