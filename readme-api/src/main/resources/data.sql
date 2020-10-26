@@ -2,7 +2,9 @@
 -- Table structure for table `authors`
 --
 
+DROP TABLE IF EXISTS `books`;
 DROP TABLE IF EXISTS `authors`;
+
 CREATE TABLE `authors` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `NAME` varchar(100) NOT NULL,
@@ -27,7 +29,6 @@ INSERT INTO `authors` VALUES
 -- Table structure for table `books`or 
 --
 
-DROP TABLE IF EXISTS `books`;
 CREATE TABLE `books` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `TITLE` varchar(500) NOT NULL,

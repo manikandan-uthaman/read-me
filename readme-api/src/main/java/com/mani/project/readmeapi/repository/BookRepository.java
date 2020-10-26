@@ -16,5 +16,4 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
 	Page<BookBasicInfo> findBy(Pageable paging);
 	Page<BookBasicInfo> findByAuthorId(int authorId, Pageable paging);
 	Page<BookBasicInfo> findByTitleStartsWith(String title, Pageable paging);
-
 }

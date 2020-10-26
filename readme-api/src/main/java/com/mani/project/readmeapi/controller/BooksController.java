@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mani.project.readmeapi.app.Author;
 import com.mani.project.readmeapi.app.Book;
@@ -86,7 +88,8 @@ public class BooksController {
 			@ApiResponse(code = 400, message = "Invalid input"),
 			@ApiResponse(code = 500, message = "Unexpected exception")
 	})
-	public int addBook(@Validated @RequestBody Book book, BindingResult bindingResult) {
+	public int addBook(@RequestPart("file") MultipartFile file,
+			@Validated @RequestPart("bookInfo") Book book, BindingResult bindingResult) throws Exception {
 		if(bindingResult.getAllErrors().size() > 0) {
 			String errorMessage = bindingResult.getAllErrors().stream().map(error -> {
 				return error.getDefaultMessage();
@@ -100,6 +103,6 @@ public class BooksController {
 			book.setAuthor(a);
 		}
 		log.debug("Create new book entry");
-		return bookService.addBook(book);
+		return bookService.addBook(file, book);
 	}
 }
