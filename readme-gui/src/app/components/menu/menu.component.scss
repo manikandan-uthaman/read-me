@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .icon-container {
     position: fixed;
     top: 5.5rem;
@@ -9,8 +11,8 @@
     height: 6rem;
     width: 6rem;
     border-radius: 50%;
-    background-image: radial-gradient(#7ed56f, #28b485);
-    box-shadow: 0 1.5rem 4rem rgba(#000000,.15);
+    background-image: radial-gradient($color-secondary-light, $color-secondary-dark);
+    box-shadow: 0 1.5rem 4rem rgba($color-black,.15);
     cursor: pointer;
     margin-bottom: 2rem;
 }

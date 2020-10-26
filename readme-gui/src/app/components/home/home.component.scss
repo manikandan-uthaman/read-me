@@ -1,6 +1,7 @@
+@import '../../../assets/styles/variables';
+
 .section-stories {
     position: relative;
-    // background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8));
 }
 
 .bg-video {
@@ -10,7 +11,6 @@
     min-width: 100%;
     min-height: 100%;    
     z-index: -1;
-    // opacity: .25;
     &-content {
         min-width: 100%;
         min-height: 100%;    
@@ -23,7 +23,7 @@
     left: 0;
     min-width: 100%;
     min-height: 100%;
-    background-image: linear-gradient(to right bottom, rgba(#7ed56f, 0.8), rgba(#28b485, 0.8));
+    background-image: linear-gradient(to right bottom, rgba($color-secondary-light, 0.8), rgba($color-secondary-dark, 0.8));
 }
 
 .header-logo-box {
@@ -45,7 +45,7 @@
 }
 
 .heading-primary {
-    color: #fff;
+    color: $color-white;
     text-transform: uppercase;
     margin-bottom: 6rem;
 }

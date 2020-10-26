@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .heading {
     text-align: center;
     margin-bottom: 4rem;
@@ -13,7 +15,7 @@
         transition: all .2s;
         &:hover {
             transform: scale(1.2);
-            text-shadow: .5rem 1rem 2rem rgba(#000000, .2);
+            text-shadow: .5rem 1rem 2rem rgba($color-black, .2);
         }       
     }
 }

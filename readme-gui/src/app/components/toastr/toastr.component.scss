@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .toastr {
     position: fixed;
     top: 2rem;
@@ -6,22 +8,22 @@
 
     &-container {
         padding: 1rem;
-        color: white;
+        color: $color-white;
         border-radius: 3px;
         margin-bottom: 1rem;
         animation: toastr var(--timeout) 1 ease-out;
     }
 
     &-success {
-        background-image: linear-gradient(to right, #28b485, #7ed56f);
+        background-image: linear-gradient(to right, $color-secondary-dark, $color-secondary-light);
     }
 
     &-error {
-        background-image: linear-gradient(to right, #ff7730, #ffb900);
+        background-image: linear-gradient(to right, $color-primary-dark, $color-primary-light);
     }
 
     &-info {
-        background-image: linear-gradient(to right, #5643fa, #2998ff);
+        background-image: linear-gradient(to right, $color-tertiary-dark, $color-tertiary-light);
     }
 
     &-text {
@@ -32,12 +34,12 @@
 
 .close-btn {
     margin-left: 1rem;
-    color: #fff;
+    color: $color-white;
     font-size: 1.5rem;
     cursor: pointer;
     font-weight: 900;
     &:hover {
-        color: #000;
+        color: $color-black;
     }
 }
 

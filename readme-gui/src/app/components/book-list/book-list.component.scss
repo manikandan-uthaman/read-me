@@ -1,7 +1,8 @@
+@import '../../../assets/styles/variables';
+
 .book-list-section {
-    background-color: #ffffff;
+    background-color: $color-white;
     padding: 5rem 3rem;
-    // min-height: 100vh;
 }
 
 .row:not(:last-child) {

@@ -1,3 +1,5 @@
+@import '../../../assets/styles/variables';
+
 .spinner {
     background-color: transparent;
     width: 100%;
@@ -15,7 +17,7 @@
         width: 1.5rem;
         height: 1.5rem;
         border-radius: 50%;
-        background-color: #777;
+        background-color: $color-grey-2;
         margin: 0 1rem;
         animation: dots 1s infinite ease-in-out;
         &:nth-child(1) {
