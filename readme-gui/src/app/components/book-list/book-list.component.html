@@ -6,6 +6,9 @@
                 <app-card [book]="book" [colorScheme]="getColorScheme(i, j)"></app-card>
         </div>
     </div>
+    <div *ngIf="!isLoading && bookList.length == 0">
+        <span>No results found</span>
+    </div>
     <app-spinner [hidden]="!isLoading"></app-spinner>
 </section>
 <div *ngIf="options.loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">

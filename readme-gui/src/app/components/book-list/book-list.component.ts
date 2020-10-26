@@ -32,7 +32,7 @@ export class BookListComponent implements OnInit {
 
   @Input() searchRequest: BookSearchRequest = {
     pageNumber: 1,
-    recordsPerPage: 10
+    recordsPerPage: 9
   };
 
   totalNumberOfpages = 0;
@@ -45,6 +45,8 @@ export class BookListComponent implements OnInit {
 
   loadBooks() {
     this.isLoading = true;
+
+    // introduced timeout to demonstrate spinner
     setTimeout(() => {
       this._bookService.getBookList(this.searchRequest).subscribe((resp: SearchResponse) => {
         this.totalNumberOfpages = Math.ceil(resp.totalNumberOfElements / resp.resultsPerPage);
@@ -58,9 +60,9 @@ export class BookListComponent implements OnInit {
         this.isLoading = false;
         this.options.loadMoreOnScroll = false;
         this.toastrService.showError('Something went wrong. Please try again later..');
-        console.log('Something went wrong..');
+        console.log(error);
       });
-    }, 3000);
+    }, 1500);
   }
 
   initializePage() {

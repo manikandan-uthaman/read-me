@@ -28,7 +28,7 @@ export class BookDetailsComponent implements OnInit {
       .subscribe(resp => {
         this.bookDetails = resp;
         this.searchRequest = {
-          filterCriteria: FilterCriteria.AUTHOR,
+          filterBy: FilterCriteria.AUTHOR,
           searchString: this.bookDetails.author.id.toString(),
           pageNumber: 1,
           recordsPerPage: 3
