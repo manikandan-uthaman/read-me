@@ -6,13 +6,15 @@
                 <div class="book-details-image"></div>
             </div>
             <div class="col-2-of-3 book-details-text">
-                <app-heading [headingText] = "bookDetails.title"></app-heading>
-                <div class="book-details-author"><span>{{ bookDetails.author.name }}</span></div>
+                <div class="book-details-heading">
+                    <app-heading [headingText] = "bookDetails.title"></app-heading>
+                    <div class="book-details-author"><span>{{ bookDetails.author.name }}</span></div>
+                </div>
                 <div class="row book-details-secondary">
-                    <div class="col-1-of-2">
+                    <div class="col-1-of-2" style="margin-right: 3rem;">
                         <div class="book-details-section book-details-description">{{ bookDetails.description }}</div>
                     </div>
-                    <div class="col-1-of-2">
+                    <div class="col-1-of-2" style="height: 90%; border-left: 1px solid #eee">
                         <div class="book-details-section book-details-info">
                             <ul>
                                 <li>Price: {{ bookDetails.price | currency: 'USD' }}</li>
