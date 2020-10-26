@@ -1,5 +1,8 @@
 package com.mani.project.readmeapi.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +10,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.mani.project.readmeapi.app.Book;
 import com.mani.project.readmeapi.app.BookBasicInfo;
 import com.mani.project.readmeapi.app.BookSearchRequest;
@@ -25,6 +31,11 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BookRepository bookRepository;
+
+	@Autowired
+	private Cloudinary cloudinaryService;
+
+	private static final String PATH_DELIMITER = "/";
 
 	@Override
 	public BookSearchResponse searchBooks(BookSearchRequest bookSearchRequest) {
@@ -61,8 +72,26 @@ public class BookServiceImpl implements BookService {
 		return book.orElse(null);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	@Override
-	public int addBook(Book book) {
+	public int addBook(MultipartFile file, Book book) throws Exception {
+		Map uploadResult = null;
+		if(file != null) {
+			File convFile = new File(System.getProperty("java.io.tmpdir") + PATH_DELIMITER + file.getOriginalFilename());
+			try {
+				file.transferTo(convFile);
+				uploadResult = cloudinaryService.uploader().upload(convFile,
+				        ObjectUtils.asMap("resource_type", "auto"));
+			} catch (IllegalStateException | IOException e) {
+				log.error("File upload failed");
+				throw e;
+			}
+		}
+
+		if(uploadResult != null) {
+			book.setUrl((String) uploadResult.get("url"));
+		}
+
 		Book b = bookRepository.save(book);
 		return b.getId();
 	}

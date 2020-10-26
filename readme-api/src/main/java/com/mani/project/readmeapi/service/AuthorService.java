@@ -8,4 +8,5 @@ public interface AuthorService {
 	
 	public List<Author> getAllAuthors();
 	public Author addAuthor(Author author);
+	public void deleteAuthor(int id);
 }

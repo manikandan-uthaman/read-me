@@ -30,4 +30,9 @@ public class AuthorServiceImpl implements AuthorService {
 		log.info("Created new author with id: {}", newAuthor.getId());
 		return newAuthor;
 	}
+	
+	@Override
+	public void deleteAuthor(int id) {
+		authorRepository.deleteById(id);
+	}
 }
