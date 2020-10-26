@@ -61,6 +61,10 @@ export class BookListComponent implements OnInit {
         this.options.loadMoreOnScroll = false;
         this.toastrService.showError('Something went wrong. Please try again later..');
         console.log(error);
+        // Route to home if used as page
+        if (this.options.showHomeButton) {
+          this.router.navigate(['/home']);
+        }
       });
     }, 1500);
   }

@@ -9,7 +9,7 @@
 
 .book-details {
     background-image: url(../../../assets/images/bg-list.jpg);
-    background-size: cover;
+    background-size: contain;
     &-wrapper{
         background-color: $color-white;
         height: 50rem;
@@ -84,6 +84,10 @@ ul {
     }
 }
 
+.rating span {
+    display: none;
+}
+
 .stars {
     --percent: calc(var(--rating) / 5 * 100%);
     
@@ -124,4 +128,29 @@ ul {
 .book-list-wrapper {
     margin-top: 2rem;
     box-shadow: 0 2rem 4rem rgba($color-black, 0.6);
+}
+
+@media (max-width: 600px) {
+    .book-details {
+        &-image {
+            display: none;
+        }
+        &-primary {
+            height: 5rem;
+        }
+        &-info {
+            width: 25%;
+        }
+        &-description {
+            width: 75%;
+            padding: 0 5%;
+            font-size: 1.4rem;
+        }
+    }
+    .rating .stars {
+        display: none;
+    }
+    .rating span {
+        display: inline;
+    }
 }

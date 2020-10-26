@@ -19,8 +19,9 @@
                         <ul>
                             <li>Price: {{ bookDetails.price | currency: 'USD' }}</li>
                             <li>Year: {{ bookDetails.year }}</li>
-                            <li>
-                                <div class="stars" style="--rating: {{ bookDetails.rating }};" aria-label="Rating of this product is 2.3 out of 5."></div>
+                            <li class="rating">
+                                <span>Rating: {{ bookDetails.rating }}</span>
+                                <div class="stars" style="--rating: {{ bookDetails.rating }};" aria-label="Rating of this product is 2.3 out of 5."></div>                                
                             </li>
                         </ul>
                     </div>

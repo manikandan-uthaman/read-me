@@ -41,6 +41,7 @@ export class BookDetailsComponent implements OnInit {
       }, error => {
         this.toastrService.showError('Something went wrong. Please try again later..');
         console.log(error);
+        this.router.navigate(['/home']);
       });
     });
   }

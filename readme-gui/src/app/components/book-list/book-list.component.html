@@ -10,6 +10,6 @@
         <span>No results found</span>
     </div>
     <app-spinner [hidden]="!isLoading"></app-spinner>
+    <div *ngIf="options.loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">
+    </div>
 </section>
-<div *ngIf="options.loadMoreOnScroll && !isLoading" observeVisibility [debounceTime] = "300" (visible) = "onScroll()">
-</div>

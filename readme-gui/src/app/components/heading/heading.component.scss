@@ -19,3 +19,11 @@
         }       
     }
 }
+
+@media (max-width: 600px) {
+    .heading {
+        &-text {
+            font-size: 1.8rem;
+        }
+    }
+}

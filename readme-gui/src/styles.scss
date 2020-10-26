@@ -66,9 +66,6 @@ body {
 .row {
     max-width: 114rem;
     margin: 0 auto;
-    // &:not(:last-child) {
-    //     margin-bottom: 8rem;
-    // }
     &::after {
         content: "";
         display: table;
@@ -84,7 +81,6 @@ body {
     }
 }
 .row .col-1-of-2 {
-    // width: calc((100%) / 2); 
     width: calc((100% - 6rem) / 2);
 }
 .row .col-1-of-3 {
@@ -94,4 +90,21 @@ body {
 .row .col-2-of-3 {
     // width: calc(100% - (100% / 3)); 
     width: calc(100% - 6rem - ((100% - (6rem*2)) / 3));
+}
+@media (max-width: 600px) {
+    html {
+        font-size: 32%;
+    }
+    .row {
+        max-width: 40rem;
+    }
+    .row [class^="col-"] {
+        width: 100%;
+        margin-bottom: 4rem;
+    }
+}
+@media (max-width: 400px) {
+    html {
+        font-size: 32%;
+    }
 }
