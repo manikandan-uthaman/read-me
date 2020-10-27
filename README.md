@@ -26,3 +26,8 @@ docker-compose down
 ```
 
 Instruction to run the front end and back end seperately can be found in the `README.md` files inside the corresponding folder.
+
+## Note: 
+- To run docker containers with on-disk db (mysql), add `sql` to spring profiles in `readme-api\config\application.properties`.
+- To run docker containers with in-memory db (h2), add `h2` to spring profiles in `readme-api\config\application.properties` and remove `readme-db` section from `docker-compose.yml` file.
+- Both `sql` and `h2` profiles should not be enabled at the same time.

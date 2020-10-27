@@ -1,7 +1,6 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Book } from 'src/app/model/book';
-import { ColorScheme } from 'src/app/model/color-schemes';
 import { BookSearchRequest } from 'src/app/model/search-request';
 import { SearchResponse } from 'src/app/model/search-response';
 import { BookService } from 'src/app/services/book.service';
@@ -84,13 +83,13 @@ export class BookListComponent implements OnInit {
       sum = sum - 3;
     }
     if (sum === 0) {
-      return ColorScheme.colorSchemeOrange;
+      return 'primary';
     }
     if (sum === 1) {
-      return ColorScheme.colorSchemeGreen;
+      return 'secondary';
     }
     if (sum === 2) {
-      return ColorScheme.colorSchemeBlue;
+      return 'tertiary';
     }
   }
 

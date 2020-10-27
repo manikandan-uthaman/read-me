@@ -23,7 +23,16 @@
         }
 
         &-back{
-            background-image: linear-gradient(to right bottom, var(--light-hex), var(--dark-hex));
+            &-primary {
+                background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+            }
+            &-secondary {
+                background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);
+            }
+            &-tertiary {
+                background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark);
+            }
+            // background-image: linear-gradient(to right bottom, var(--light-hex), var(--dark-hex));
             transform: rotateY(180deg);
         }
     }
@@ -36,7 +45,17 @@
     }
     
     &-picture{
-        background-image: linear-gradient(to right bottom, var(--light-hex), var(--dark-hex)), var(--img);
+        &-primary {
+            background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark), var(--img);
+        }
+        &-secondary {
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark), var(--img);
+        }
+        &-tertiary {
+            background-image: linear-gradient(to right bottom, $color-tertiary-light, $color-tertiary-dark), var(--img);
+        }
+
+        // background-image: linear-gradient(to right bottom, var(--light-hex), var(--dark-hex)), var(--img);
         background-blend-mode: screen;
         background-size: cover;
         height: 23rem;
@@ -56,7 +75,15 @@
         width: 75%;
     }
     &-heading-span {
-        background-image: linear-gradient(to right bottom, rgba(var(--light-rgb), .85), rgba(var(--dark-rgb), .85));
+        &-primary {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85), rgba($color-primary-dark, .85));
+        }
+        &-secondary {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85), rgba($color-secondary-dark, .85));
+        }
+        &-tertiary {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85), rgba($color-tertiary-dark, .85));
+        }
         padding: 1rem 1.5rem;
         -webkit-box-decoration-break: clone;
         box-decoration-break: clone;

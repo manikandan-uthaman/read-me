@@ -132,14 +132,21 @@ ul {
 
 @media (max-width: 600px) {
     .book-details {
-        &-image {
-            display: none;
+        // &-image {
+        //     display: none;
+        // }
+        &-wrapper {
+            height: auto;
+            overflow: unset;
         }
         &-primary {
             height: 5rem;
         }
         &-info {
             width: 25%;
+        }
+        &-text {
+            border-top: 2rem solid rgba($color-black, .6);
         }
         &-description {
             width: 75%;

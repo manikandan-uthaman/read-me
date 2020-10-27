@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
-import { ColorScheme } from 'src/app/model/color-schemes';
 
 @Component({
   selector: 'app-card',
@@ -9,7 +8,7 @@ import { ColorScheme } from 'src/app/model/color-schemes';
 export class CardComponent implements OnInit {
 
   @Input() book;
-  @Input() colorScheme = ColorScheme.colorSchemeOrange;
+  @Input() colorScheme = 'primary';
 
   constructor() { }
 

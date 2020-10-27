@@ -1,5 +1,12 @@
 version: "3.8"
 services: 
+    readme-db:
+        build: 
+            context: readme-db
+            dockerfile: Dockerfile
+            args: 
+                - DB_PWD=root
+        image: readme-db
     readme-app:
         build: 
             context: readme-api

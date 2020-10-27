@@ -1,14 +1,16 @@
-<div class="card" 
-    style="--light-hex:{{colorScheme.lightHex}};
-            --light-rgb: {{colorScheme.lightRgb}};
-            --dark-hex: {{colorScheme.darkHex}};
-            --dark-rgb: {{colorScheme.darkRgb}}">
+<div class="card">
     <div class="card-side card-side-front">
-        <div class="card-picture" style="--img:url({{book.url}})">
+        <div class="card-picture" [ngClass] = "{
+            'card-picture-primary': colorScheme == 'primary',
+            'card-picture-secondary': colorScheme == 'secondary',
+            'card-picture-tertiary': colorScheme == 'tertiary'}" style="--img:url({{book.url}})">
             &nbsp;
         </div>
         <h4 class="card-heading">
-            <span class="card-heading-span">
+            <span class="card-heading-span" [ngClass] = "{
+                'card-heading-span-primary': colorScheme == 'primary',
+                'card-heading-span-secondary': colorScheme == 'secondary',
+                'card-heading-span-tertiary': colorScheme == 'tertiary'}">
                 {{ book.title }}
             </span>
         </h4>
@@ -21,7 +23,10 @@
             </ul>
         </div>
     </div>
-    <div class="card-side card-side-back">
+    <div class="card-side card-side-back" [ngClass] = "{
+        'card-side-back-primary': colorScheme == 'primary',
+        'card-side-back-secondary': colorScheme == 'secondary',
+        'card-side-back-tertiary': colorScheme == 'tertiary'}">
         <a routerLink="/book/{{book.id}}" class="btn btn-white card-details-btn">View Details</a>
     </div>
 </div>
