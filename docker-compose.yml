@@ -1,0 +1,20 @@
+version: "3.8"
+services: 
+    readme-app:
+        build: 
+            context: readme-api
+            dockerfile: Dockerfile
+        image: readme-app
+    readme-gui:
+        build: 
+            context: readme-gui
+            dockerfile: Dockerfile
+        image: readme-gui
+        depends_on:
+            - readme-app
+    proxy:
+        image: nginx:1.13
+        ports:
+            - '80:80' # expose 80 on host and sent to 80 in container
+        volumes:
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf

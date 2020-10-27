@@ -17,3 +17,16 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Docker
+To create a docker image you can use the following command:
+
+```shell
+docker build -t readme-gui .
+```
+
+To run the docker image use:
+
+```shell
+docker container run --publish 80:80 readme-gui
+```
