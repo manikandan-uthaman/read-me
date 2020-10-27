@@ -51,5 +51,5 @@ docker build -t readme-api .
 To run the docker image use:
 
 ```shell
-docker container rum --publish 8080:8080 readme-api
+docker container run --publish 8080:8080 readme-api
 ```
